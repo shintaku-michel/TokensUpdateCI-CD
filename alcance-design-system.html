@@ -57,7 +57,36 @@
       height: 100vh;
       overflow-y: auto;
       display: flex;
-      flex-direction: column
+      flex-direction: column;
+      transition: width .2s ease, opacity .2s ease
+    }
+
+    .sidebar.collapsed {
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      border-right: none
+    }
+
+    .sidebar-toggle {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .14s
+    }
+
+    .sidebar-toggle:hover {
+      color: var(--text-primary);
+      border-color: var(--color-blue);
+      background: rgba(88, 166, 255, .07)
     }
 
     .sidebar-logo {
@@ -1984,7 +2013,14 @@
   <!-- MAIN -->
   <main class="main">
     <div class="topbar">
-      <div class="topbar-title">Alcance DS — <span id="topbar-current">Visão Geral</span></div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="sidebar-toggle" onclick="toggleSidebar()" title="Alternar menu" aria-label="Alternar menu">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 000 1.5h12.5a.75.75 0 000-1.5H1.75z"/>
+          </svg>
+        </button>
+        <div class="topbar-title">Alcance DS — <span id="topbar-current">Visão Geral</span></div>
+      </div>
       <div class="topbar-badges">
         <span class="badge badge-blue">v1.0.0</span>
         <span class="badge badge-green"><span class="badge-dot"></span>Stable</span>
@@ -5621,6 +5657,10 @@
 
   <script>
     const NAMES = { home: 'Visão Geral', colors: 'Cores', typography: 'Tipografia', buttons: 'Buttons', fields: 'Fields & Inputs', fieldset: 'Fieldset', checkbox: 'Checkbox & Radio', badges: 'Badges', cards: 'Cards', alerts: 'Alert', user: 'User Avatar', navbar: 'Navbar', breadcrumb: 'Breadcrumb', tabs: 'Tabs', dropdown: 'Dropdown', collapse: 'Collapse', modal: 'Modal', tooltip: 'Tooltip', autocomplete: 'Autocomplete', tables: 'Tables', datatable: 'Datatable', footer: 'Footer', figma: 'Figma Sync' };
+
+    function toggleSidebar() {
+      document.querySelector('.sidebar').classList.toggle('collapsed');
+    }
 
     function nav(id, el) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
