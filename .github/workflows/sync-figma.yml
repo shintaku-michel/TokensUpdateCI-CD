@@ -22,7 +22,12 @@ jobs:
       - name: Sync Figma tokens
         env:
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-        run: node sync-figma.js
+        run: |
+          for i in 1 2 3; do
+            node sync-figma.js && break
+            echo "Tentativa $i falhou, aguardando 90s..."
+            sleep 90
+          done
 
       - name: Commit se houver mudanças
         run: |
