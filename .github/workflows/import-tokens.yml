@@ -3,7 +3,7 @@ name: Import Tokens
 on:
   push:
     paths:
-      - 'tokens/*.json'
+      - 'tokens/files/*.json'
   workflow_dispatch:
 
 permissions:
