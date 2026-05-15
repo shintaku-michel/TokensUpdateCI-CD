@@ -5648,15 +5648,13 @@
         </div>
       </div>
 
-      <!-- FIGMA SYNC SECTION -->
+      <!-- TOKENS SECTION -->
       <div id="section-figma" class="section">
         <div class="section-header">
-          <div class="section-title">Figma Sync</div>
-          <div class="section-desc">Tokens extraídos em runtime do arquivo Figma. Cores, tipografia e metadados
-            sincronizados diretamente da API.</div>
+          <div class="section-title">Tokens</div>
+          <div class="section-desc">Tokens importados via Admin a partir dos arquivos da pasta tokens/.</div>
         </div>
         <div id="tokens-body" style="margin-top:28px"></div>
-        <div id="figma-body" style="margin-top:28px"></div>
       </div>
 
     </div><!-- /content -->
@@ -5909,10 +5907,7 @@
     /* TOKEN_SEED:END */
 
     function loadFigma() {
-      figmaRender(FIGMA_SEED);
-      if (typeof TOKEN_SEED !== 'undefined' && TOKEN_SEED.length > 0) {
-        tokensRender(TOKEN_SEED);
-      }
+      tokensRender(TOKEN_SEED);
     }
 
     function figmaColorTab(btn, panelId) {
@@ -5929,7 +5924,10 @@
     function tokensRender(tokens) {
       const body = document.getElementById('tokens-body');
       if (!body) return;
-      if (!tokens || !tokens.length) return;
+      if (!tokens || !tokens.length) {
+        body.innerHTML = '<p style="color:var(--text-secondary);font-size:14px;padding:8px 0">Nenhum token encontrado. Importe arquivos JSON via Admin para visualizá-los aqui.</p>';
+        return;
+      }
 
       const allModes = [...new Set(tokens.flatMap(t => Object.keys(t.modes)))].sort();
 
