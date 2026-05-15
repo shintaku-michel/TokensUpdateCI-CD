@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-15T21:35:58.038Z",
+  "updatedAt": "2026-05-15T21:39:01.541Z",
   "tokens": [
     {
       "name": "text-color-base",
@@ -3388,6 +3388,174 @@
       "type": "COLOR",
       "modes": {
         "Mode 1": "#FFFFFF"
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-xs",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 12
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-sm",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 14
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-base",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 16
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-lg",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 18
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 20
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-2xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 22
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-3xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 26
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-4xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 32
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-5xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 40
+      }
+    },
+    {
+      "name": "font/size/--alc-font-size-6xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 48
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-xs",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 16
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-sm",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 16
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-base",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 24
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-lg",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 24
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 24
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-2xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 32
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-3xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 32
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-4xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 40
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-5xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 48
+      }
+    },
+    {
+      "name": "font/line-height/--alc-font-line-height-6xl",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 56
+      }
+    },
+    {
+      "name": "font/weight/regular",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 400
+      }
+    },
+    {
+      "name": "font/weight/medium",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 500
+      }
+    },
+    {
+      "name": "font/weight/semibold",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 600
+      }
+    },
+    {
+      "name": "font/weight/bold",
+      "type": "NUMBER",
+      "modes": {
+        "Mode 1": 700
       }
     }
   ]
