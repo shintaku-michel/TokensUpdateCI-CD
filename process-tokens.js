@@ -1,8 +1,8 @@
 const fs   = require('fs');
 const path = require('path');
 
-const TOKENS_DIR    = path.join(__dirname, 'tokens');
-const COMPILED_FILE = path.join(__dirname, 'compiled-version.json');
+const TOKENS_DIR    = path.join(__dirname, 'tokens', 'files');
+const COMPILED_FILE = path.join(__dirname, 'tokens', 'compiled-version.json');
 const HTML_FILE     = path.join(__dirname, 'alcance-design-system.html');
 
 // Load existing compiled version as baseline
