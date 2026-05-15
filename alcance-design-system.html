@@ -2003,6 +2003,12 @@
       color: var(--text-secondary);
       opacity: .4
     }
+
+    .token-number-value {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary)
+    }
   </style>
 </head>
 
@@ -5931,14 +5937,29 @@
 
       const allModes = [...new Set(tokens.flatMap(t => Object.keys(t.modes)))].sort();
 
+      // Group by first path segment (e.g. "--alc-radius" from "--alc-radius/default")
       const groups = {};
       for (const t of tokens) {
-        const parts = t.name.split('-');
-        const group = parts.length > 2 ? parts.slice(0, -1).join('-') : t.name;
+        const group = t.name.includes('/') ? t.name.split('/')[0] : t.name.split('-').slice(0, -1).join('-') || t.name;
         (groups[group] = groups[group] || []).push(t);
       }
 
       const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+      function renderCell(t, m) {
+        const val = t.modes[m];
+        if (val === undefined || val === null) return `<td class="token-no-value">—</td>`;
+        if (t.type === 'COLOR') {
+          return `<td><div class="token-swatch-row">
+            <div class="token-swatch-mini" style="background:${val}"></div>
+            <span>${val}</span>
+          </div></td>`;
+        }
+        if (t.type === 'NUMBER') {
+          return `<td><span class="token-number-value">${val}${Number.isFinite(val) ? 'px' : ''}</span></td>`;
+        }
+        return `<td class="token-name" style="opacity:.7">${val}</td>`;
+      }
 
       let html = `<div class="subsection-title">Tokens Importados</div>`;
 
@@ -5950,18 +5971,9 @@
         html += `</tr></thead><tbody>`;
 
         for (const t of list) {
-          html += `<tr><td class="token-name">${t.name}</td>`;
-          for (const m of allModes) {
-            const hex = t.modes[m];
-            if (hex && t.type === 'COLOR') {
-              html += `<td><div class="token-swatch-row">
-                <div class="token-swatch-mini" style="background:${hex}"></div>
-                <span>${hex}</span>
-              </div></td>`;
-            } else {
-              html += `<td class="token-no-value">—</td>`;
-            }
-          }
+          const label = t.name.includes('/') ? t.name.split('/').slice(1).join('/') : t.name;
+          html += `<tr><td class="token-name">${label}</td>`;
+          for (const m of allModes) html += renderCell(t, m);
           html += `</tr>`;
         }
 

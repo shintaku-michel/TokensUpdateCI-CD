@@ -19,6 +19,45 @@ if (fs.existsSync(COMPILED_FILE)) {
   }
 }
 
+// Recursively extract tokens from nested Figma JSON
+function extractTokens(obj, prefix, modeName, out) {
+  for (const [key, value] of Object.entries(obj)) {
+    if (key === '$extensions') continue;
+    if (typeof value !== 'object' || value === null) continue;
+
+    const name = prefix ? `${prefix}/${key}` : key;
+
+    if (value.$type) {
+      const type  = value.$type.toUpperCase();
+      let   token = null;
+
+      if (type === 'COLOR') {
+        const v = value.$value;
+        if (typeof v === 'string') {
+          token = v;
+        } else if (v?.hex) {
+          token = v.hex;
+        } else if (Array.isArray(v?.components)) {
+          const [r, g, b] = v.components.map(c => Math.round(c * 255));
+          token = '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+        }
+      } else if (type === 'NUMBER') {
+        token = value.$value;
+      } else if (type === 'STRING') {
+        token = value.$value;
+      }
+
+      if (token !== null && token !== undefined) {
+        if (!out[name]) out[name] = { type, modes: {} };
+        out[name].modes[modeName] = token;
+      }
+    } else {
+      // Group — recurse deeper
+      extractTokens(value, name, modeName, out);
+    }
+  }
+}
+
 // Merge tokens from each file in tokens/
 const files = fs.readdirSync(TOKENS_DIR).filter(f => f.endsWith('.json'));
 
@@ -35,33 +74,11 @@ for (const file of files) {
     data.$extensions?.['com.figma.modeName'] ||
     file.replace(/\.tokens\.json$/, '').replace(/\.json$/, '');
 
-  for (const [key, value] of Object.entries(data)) {
-    if (key === '$extensions') continue;
-    if (typeof value !== 'object' || !value.$type) continue;
-
-    const type = value.$type.toUpperCase();
-    let hex = null;
-
-    if (type === 'COLOR') {
-      const v = value.$value;
-      if (typeof v === 'string') {
-        hex = v;
-      } else if (v?.hex) {
-        hex = v.hex;
-      } else if (Array.isArray(v?.components)) {
-        const [r, g, b] = v.components.map(c => Math.round(c * 255));
-        hex = '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
-      }
-    }
-
-    if (!compiled[key]) compiled[key] = { type, modes: {} };
-    if (hex) compiled[key].modes[modeName] = hex;
-  }
-
+  extractTokens(data, '', modeName, compiled);
   console.log(`Merged: ${file} (mode: ${modeName})`);
 }
 
-// Build TOKEN_SEED from compiled map
+// Build TOKEN_SEED
 const TOKEN_SEED = Object.entries(compiled).map(([name, d]) => ({
   name,
   type: d.type,
@@ -69,7 +86,11 @@ const TOKEN_SEED = Object.entries(compiled).map(([name, d]) => ({
 }));
 
 // Save compiled-version.json
-fs.writeFileSync(COMPILED_FILE, JSON.stringify({ updatedAt: new Date().toISOString(), tokens: TOKEN_SEED }, null, 2), 'utf8');
+fs.writeFileSync(
+  COMPILED_FILE,
+  JSON.stringify({ updatedAt: new Date().toISOString(), tokens: TOKEN_SEED }, null, 2),
+  'utf8'
+);
 console.log(`compiled-version.json: ${TOKEN_SEED.length} tokens`);
 
 // Inject into HTML between TOKEN_SEED markers
