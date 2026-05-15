@@ -1947,6 +1947,62 @@
         transform: rotate(360deg)
       }
     }
+
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+      font-size: 13px
+    }
+
+    .token-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .token-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(48, 54, 61, .4);
+      vertical-align: middle
+    }
+
+    .token-table tr:last-child td {
+      border-bottom: none
+    }
+
+    .token-name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-primary)
+    }
+
+    .token-swatch-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary)
+    }
+
+    .token-swatch-mini {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      flex-shrink: 0
+    }
+
+    .token-no-value {
+      color: var(--text-secondary);
+      opacity: .4
+    }
   </style>
 </head>
 
@@ -2006,7 +2062,8 @@
     </div>
     <div class="sidebar-section">
       <div class="sidebar-label">Integração</div>
-      <button class="sidebar-link" onclick="nav('figma',this)" id="sidebar-figma"><span class="sidebar-dot" style="background:var(--color-purple)"></span>Figma Sync</button>
+      <button class="sidebar-link" onclick="nav('figma',this)" id="sidebar-figma"><span class="sidebar-dot"
+          style="background:var(--color-purple)"></span>Figma Sync</button>
     </div>
   </nav>
 
@@ -2016,7 +2073,8 @@
       <div style="display:flex;align-items:center;gap:12px">
         <button class="sidebar-toggle" onclick="toggleSidebar()" title="Alternar menu" aria-label="Alternar menu">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 000 1.5h12.5a.75.75 0 000-1.5H1.75z"/>
+            <path
+              d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 000 1.5h12.5a.75.75 0 000-1.5H1.75z" />
           </svg>
         </button>
         <div class="topbar-title">Alcance DS — <span id="topbar-current">Visão Geral</span></div>
@@ -5594,8 +5652,10 @@
       <div id="section-figma" class="section">
         <div class="section-header">
           <div class="section-title">Figma Sync</div>
-          <div class="section-desc">Tokens extraídos em runtime do arquivo Figma. Cores, tipografia e metadados sincronizados diretamente da API.</div>
+          <div class="section-desc">Tokens extraídos em runtime do arquivo Figma. Cores, tipografia e metadados
+            sincronizados diretamente da API.</div>
         </div>
+        <div id="tokens-body" style="margin-top:28px"></div>
         <div id="figma-body" style="margin-top:28px"></div>
       </div>
 
@@ -5720,136 +5780,418 @@
 
     /* FIGMA_SEED:START */
     const FIGMA_SEED = {
-      "syncedAt": "2026-05-15T17:18:00.651Z",
+      "syncedAt": "2026-05-13T20:22:27.007Z",
       "file": {
-            "name": "Encurtador de Links",
-            "lastModified": "2026-05-13T14:35:40Z",
+            "name": "FIGMA4DEVS",
+            "lastModified": "2026-05-13T20:19:55Z",
             "pages": [
-                  "🚀 Sobre",
-                  "💻 Projeto",
-                  "🎨 Style Guide"
+                  "Pagina 1"
             ]
       },
       "colors": [
             {
-                  "group": "Produto",
-                  "hex": "#2c46b1",
-                  "label": "blue-base"
+                  "group": "--alc-color/dark",
+                  "label": "white",
+                  "hex": "#ffffff"
             },
             {
-                  "group": "Produto",
-                  "hex": "#2c4091",
-                  "label": "blue-dark"
+                  "group": "--alc-color/dark",
+                  "label": "layer-a",
+                  "hex": "#1c1d1f"
             },
             {
-                  "group": "Base",
-                  "hex": "#ffffff",
-                  "label": "white"
+                  "group": "--alc-color/light",
+                  "label": "white",
+                  "hex": "#ffffff"
             },
             {
-                  "group": "Base",
-                  "hex": "#f9f9fb",
-                  "label": "gray-100"
+                  "group": "feedback/light",
+                  "label": "warning",
+                  "hex": "#f5e6af"
             },
             {
-                  "group": "Base",
-                  "hex": "#e4e6ec",
-                  "label": "gray-200"
+                  "group": "--alc-color/light",
+                  "label": "layer-b",
+                  "hex": "#edeff0"
             },
             {
-                  "group": "Base",
-                  "hex": "#cdcfd5",
-                  "label": "gray-300"
+                  "group": "--alc-color/light",
+                  "label": "layer-a",
+                  "hex": "#f5f6f7"
             },
             {
-                  "group": "Base",
-                  "hex": "#74798b",
-                  "label": "gray-400"
+                  "group": "--alc-color/light",
+                  "label": "layer-c",
+                  "hex": "#ffffff"
             },
             {
-                  "group": "Base",
-                  "hex": "#4d505c",
-                  "label": "gray-500"
+                  "group": "feedback/light",
+                  "label": "info",
+                  "hex": "#c3ebfa"
             },
             {
-                  "group": "Base",
-                  "hex": "#1f2025",
-                  "label": "gray-600"
+                  "group": "--alc-color-text/light",
+                  "label": "subtle",
+                  "hex": "#5c5c5c"
             },
             {
-                  "group": "Feedback",
-                  "hex": "#b12c4d",
-                  "label": "danger"
+                  "group": "--alc-color-text/light",
+                  "label": "surface",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "--alc-color-text/light",
+                  "label": "secondary",
+                  "hex": "#1b1b1b"
+            },
+            {
+                  "group": "--alc-color-text/light",
+                  "label": "error",
+                  "hex": "#e52207"
+            },
+            {
+                  "group": "--alc-color-text/light",
+                  "label": "primary",
+                  "hex": "#000000"
+            },
+            {
+                  "group": "--alc-color/light",
+                  "label": "surface",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "--alc-color/dark",
+                  "label": "border",
+                  "hex": "#adadad"
+            },
+            {
+                  "group": "--alc-color/dark",
+                  "label": "layer-c",
+                  "hex": "#1c1d1f"
+            },
+            {
+                  "group": "--alc-color/dark",
+                  "label": "surface",
+                  "hex": "#111818"
+            },
+            {
+                  "group": "feedback/light",
+                  "label": "sucess",
+                  "hex": "#dfeacd"
+            },
+            {
+                  "group": "--alc-color/dark",
+                  "label": "black",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "feedback/dark",
+                  "label": "warning",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "feedback/dark",
+                  "label": "sucess",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "--alc-color/light",
+                  "label": "border",
+                  "hex": "#c9c9c9"
+            },
+            {
+                  "group": "--alc-color/light",
+                  "label": "focus-outline",
+                  "hex": "#07648d"
+            },
+            {
+                  "group": "feedback/light",
+                  "label": "error",
+                  "hex": "#ecbec6"
+            },
+            {
+                  "group": "feedback/dark",
+                  "label": "info",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "feedback/dark",
+                  "label": "error",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "--alc-color/light",
+                  "label": "black",
+                  "hex": "#000000"
+            },
+            {
+                  "group": "--alc-color/dark",
+                  "label": "layer-b",
+                  "hex": "#232425"
+            },
+            {
+                  "group": "--alc-color/dark",
+                  "label": "focus-outline",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "subtle",
+                  "hex": "#919191"
+            },
+            {
+                  "group": "--alc-color-text/light",
+                  "label": "layer-b",
+                  "hex": "#edeff0"
+            },
+            {
+                  "group": "--alc-color-text/light",
+                  "label": "layer-a",
+                  "hex": "#f5f6f7"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "link",
+                  "hex": "#28a0cb"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "primary",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "--alc-color-text/light",
+                  "label": "layer-c",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "layer-a",
+                  "hex": "#1c1d1f"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "border",
+                  "hex": "#adadad"
+            },
+            {
+                  "group": "--alc-color-text/light",
+                  "label": "border",
+                  "hex": "#c9c9c9"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "surface",
+                  "hex": "#111818"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "layer-b",
+                  "hex": "#232425"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "error",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "layer-c",
+                  "hex": "#1c1d1f"
+            },
+            {
+                  "group": "--alc-color-text/light",
+                  "label": "link",
+                  "hex": "#07648d"
+            },
+            {
+                  "group": "--alc-color-text/dark",
+                  "label": "secondary",
+                  "hex": "#e6e6e6"
+            },
+            {
+                  "group": "focus/dark",
+                  "label": "dark",
+                  "hex": "#ffffff"
+            },
+            {
+                  "group": "focus/light",
+                  "label": "light",
+                  "hex": "#07648d"
             }
       ],
       "typo": [
             {
-                  "sample": "Open Sans",
-                  "family": "Open Sans",
-                  "size": 56,
-                  "weight": 700
-            },
-            {
-                  "sample": "Font Family",
-                  "family": "Plus Jakarta Sans",
-                  "size": 24,
-                  "weight": 300
-            },
-            {
-                  "sample": "Text Xl",
-                  "family": "Open Sans",
-                  "size": 24,
-                  "weight": 700
-            },
-            {
-                  "sample": "24px",
-                  "family": "Roboto Condensed",
+                  "sample": "--alc-font-size-xl",
+                  "family": "Roboto",
                   "size": 20,
                   "weight": 400
             },
             {
-                  "sample": "Name",
-                  "family": "Plus Jakarta Sans",
+                  "sample": "--alc-font-size-lg",
+                  "family": "Roboto",
                   "size": 18,
-                  "weight": 300
+                  "weight": 400
             },
             {
-                  "sample": "Text Lg",
-                  "family": "Open Sans",
-                  "size": 18,
-                  "weight": 700
-            },
-            {
-                  "sample": "Esta fonte pode ser acessada em Google F",
-                  "family": "Inter",
+                  "sample": "--alc-font-size-base",
+                  "family": "Roboto",
                   "size": 16,
-                  "weight": 500
+                  "weight": 400
             },
             {
-                  "sample": "Text Md",
-                  "family": "Open Sans",
+                  "sample": "--alc-font-size-sm",
+                  "family": "Roboto",
                   "size": 14,
-                  "weight": 600
+                  "weight": 400
+            },
+            {
+                  "sample": "--alc-font-size-xs",
+                  "family": "Roboto",
+                  "size": 12,
+                  "weight": 400
+            }
+      ],
+      "effects": [
+            {
+                  "group": "",
+                  "label": "shadow",
+                  "effects": [
+                        {
+                              "type": "DROP_SHADOW",
+                              "color": "#000000",
+                              "alpha": 0.25,
+                              "offsetX": 4,
+                              "offsetY": 4,
+                              "blur": 12
+                        }
+                  ]
+            }
+      ],
+      "grids": [
+            {
+                  "group": "gridscale",
+                  "label": "10px",
+                  "grids": [
+                        {
+                              "pattern": "GRID",
+                              "sectionSize": 10,
+                              "gutterSize": 0,
+                              "count": -1,
+                              "alignment": "MIN",
+                              "offset": 0,
+                              "color": "rgba(255, 0, 0, 0.1)"
+                        }
+                  ]
             }
       ]
 };
     /* FIGMA_SEED:END */
 
+    /* TOKEN_SEED:START */
+    const TOKEN_SEED = [];
+    /* TOKEN_SEED:END */
+
     function loadFigma() {
       figmaRender(FIGMA_SEED);
+      if (typeof TOKEN_SEED !== 'undefined' && TOKEN_SEED.length > 0) {
+        tokensRender(TOKEN_SEED);
+      }
+    }
+
+    function figmaColorTab(btn, panelId) {
+      const list = btn.closest('.figma-tab-list');
+      list.querySelectorAll('.doc-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      let el = list.nextElementSibling;
+      while (el && el.classList.contains('figma-tab-panel')) {
+        el.classList.toggle('active', el.id === panelId);
+        el = el.nextElementSibling;
+      }
+    }
+
+    function tokensRender(tokens) {
+      const body = document.getElementById('tokens-body');
+      if (!body) return;
+      if (!tokens || !tokens.length) return;
+
+      const allModes = [...new Set(tokens.flatMap(t => Object.keys(t.modes)))].sort();
+
+      const groups = {};
+      for (const t of tokens) {
+        const parts = t.name.split('-');
+        const group = parts.length > 2 ? parts.slice(0, -1).join('-') : t.name;
+        (groups[group] = groups[group] || []).push(t);
+      }
+
+      const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+      let html = `<div class="subsection-title">Tokens Importados</div>`;
+
+      for (const [group, list] of Object.entries(groups)) {
+        html += `<div class="figma-group-label">${group}</div>`;
+        html += `<table class="token-table"><thead><tr>`;
+        html += `<th>Token</th>`;
+        for (const m of allModes) html += `<th>${cap(m)}</th>`;
+        html += `</tr></thead><tbody>`;
+
+        for (const t of list) {
+          html += `<tr><td class="token-name">${t.name}</td>`;
+          for (const m of allModes) {
+            const hex = t.modes[m];
+            if (hex && t.type === 'COLOR') {
+              html += `<td><div class="token-swatch-row">
+                <div class="token-swatch-mini" style="background:${hex}"></div>
+                <span>${hex}</span>
+              </div></td>`;
+            } else {
+              html += `<td class="token-no-value">—</td>`;
+            }
+          }
+          html += `</tr>`;
+        }
+
+        html += `</tbody></table>`;
+      }
+
+      body.innerHTML = html;
     }
 
     function figmaRender(data) {
-      const body     = document.getElementById('figma-body');
-      const lastMod  = new Date(data.file.lastModified).toLocaleDateString('pt-BR');
+      const body = document.getElementById('figma-body');
+      const lastMod = new Date(data.file.lastModified).toLocaleDateString('pt-BR');
       const syncedAt = new Date(data.syncedAt).toLocaleString('pt-BR');
-      const pages    = data.file.pages.join(' · ');
+      const pages = data.file.pages.join(' · ');
 
-      const groups = {};
+      const lightGroups = {}, darkGroups = {}, otherGroups = {};
       for (const c of data.colors) {
-        if (!groups[c.group]) groups[c.group] = [];
-        groups[c.group].push(c);
+        const g = c.group.toLowerCase();
+        if (g.includes('light')) (lightGroups[c.group] = lightGroups[c.group] || []).push(c);
+        else if (g.includes('dark')) (darkGroups[c.group] = darkGroups[c.group] || []).push(c);
+        else (otherGroups[c.group] = otherGroups[c.group] || []).push(c);
       }
+
+      function renderGroups(groups) {
+        let h = '';
+        for (const [grp, list] of Object.entries(groups)) {
+          const label = grp.replace(/\/(light|dark)$/i, '').replace(/^(light|dark)\//i, '').trim();
+          h += `<div class="figma-group-label">${label}</div><div class="figma-color-row">`;
+          for (const c of list) {
+            const fg = figmaLuminance(c.hex) > 0.35 ? '#1f2025' : '#f9f9fb';
+            h += `
+              <div class="figma-color-chip">
+                <div class="figma-swatch" style="background:${c.hex}"><span style="color:${fg}">${c.hex}</span></div>
+                <div class="figma-chip-label">${c.label}</div>
+              </div>`;
+          }
+          h += `</div>`;
+        }
+        return h;
+      }
+
+      const hasLight = Object.keys(lightGroups).length > 0;
+      const hasDark = Object.keys(darkGroups).length > 0;
+      const hasTabs = hasLight && hasDark;
 
       let html = `
         <div class="figma-file-card">
@@ -5870,17 +6212,17 @@
         </div>`;
 
       html += `<div class="subsection-title">Paleta de Cores</div>`;
-      for (const [grp, list] of Object.entries(groups)) {
-        html += `<div class="figma-group-label">${grp}</div><div class="figma-color-row">`;
-        for (const c of list) {
-          const fg = figmaLuminance(c.hex) > 0.35 ? '#1f2025' : '#f9f9fb';
-          html += `
-            <div class="figma-color-chip">
-              <div class="figma-swatch" style="background:${c.hex}"><span style="color:${fg}">${c.hex}</span></div>
-              <div class="figma-chip-label">${c.label}</div>
-            </div>`;
-        }
-        html += `</div>`;
+
+      if (hasTabs) {
+        html += `
+          <div class="figma-tab-list doc-tab-list">
+            <button class="doc-tab-btn active" onclick="figmaColorTab(this,'figma-colors-light')">Modo Light</button>
+            <button class="doc-tab-btn" onclick="figmaColorTab(this,'figma-colors-dark')">Modo Dark</button>
+          </div>
+          <div id="figma-colors-light" class="figma-tab-panel doc-tab-panel active" style="padding-top:20px">${renderGroups(lightGroups)}${renderGroups(otherGroups)}</div>
+          <div id="figma-colors-dark" class="figma-tab-panel doc-tab-panel" style="padding-top:20px">${renderGroups(darkGroups)}</div>`;
+      } else {
+        html += renderGroups({ ...otherGroups, ...lightGroups, ...darkGroups });
       }
 
       html += `<div class="subsection-title" style="margin-top:32px">Tipografia</div>`;
