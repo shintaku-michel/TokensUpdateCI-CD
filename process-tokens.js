@@ -3,7 +3,7 @@ const path = require('path');
 
 const TOKENS_DIR    = path.join(__dirname, 'tokens', 'files');
 const COMPILED_FILE = path.join(__dirname, 'tokens', 'compiled-version.json');
-const HTML_FILE     = path.join(__dirname, 'alcance-design-system.html');
+const COMPILED_JS   = path.join(__dirname, 'tokens', 'compiled-version.js');
 
 // Load existing compiled version as baseline
 let compiled = {};
@@ -93,21 +93,10 @@ fs.writeFileSync(
 );
 console.log(`compiled-version.json: ${TOKEN_SEED.length} tokens`);
 
-// Inject into HTML between TOKEN_SEED markers
-let html = fs.readFileSync(HTML_FILE, 'utf8');
-const START = '/* TOKEN_SEED:START */';
-const END   = '/* TOKEN_SEED:END */';
-const si    = html.indexOf(START);
-const ei    = html.indexOf(END);
-
-if (si === -1 || ei === -1) {
-  console.error('TOKEN_SEED markers not found in HTML');
-  process.exit(1);
-}
-
-html = html.slice(0, si + START.length) +
-  `\n    const TOKEN_SEED = ${JSON.stringify(TOKEN_SEED, null, 6)};\n    ` +
-  html.slice(ei);
-
-fs.writeFileSync(HTML_FILE, html, 'utf8');
-console.log(`alcance-design-system.html atualizado.`);
+// Save compiled-version.js (loaded by alcance-design-system.html via <script src>)
+fs.writeFileSync(
+  COMPILED_JS,
+  `const TOKEN_SEED = ${JSON.stringify(TOKEN_SEED, null, 2)};\n`,
+  'utf8'
+);
+console.log(`compiled-version.js: ${TOKEN_SEED.length} tokens`);
