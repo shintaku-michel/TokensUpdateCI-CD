@@ -1,0 +1,12 @@
+{
+  "updatedAt": "2026-05-15T22:33:39.918Z",
+  "tokens": [
+    {
+      "name": "text-color-base",
+      "type": "COLOR",
+      "modes": {
+        "dark": "#FFFFFF"
+      }
+    }
+  ]
+}
