@@ -47,5 +47,96 @@ var TOKEN_SEED = [
     "modes": {
       "Mode 1": 9999
     }
+  },
+  {
+    "name": "size/10",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 64
+    }
+  },
+  {
+    "name": "size/11",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 80
+    }
+  },
+  {
+    "name": "size/12",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 96
+    }
+  },
+  {
+    "name": "size/13",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 160
+    }
+  },
+  {
+    "name": "size/01",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 2
+    }
+  },
+  {
+    "name": "size/02",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 4
+    }
+  },
+  {
+    "name": "size/03",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 8
+    }
+  },
+  {
+    "name": "size/04",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 12
+    }
+  },
+  {
+    "name": "size/05",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 16
+    }
+  },
+  {
+    "name": "size/06",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 24
+    }
+  },
+  {
+    "name": "size/07",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 32
+    }
+  },
+  {
+    "name": "size/08",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 40
+    }
+  },
+  {
+    "name": "size/09",
+    "type": "NUMBER",
+    "modes": {
+      "Mode 1": 48
+    }
   }
 ];
