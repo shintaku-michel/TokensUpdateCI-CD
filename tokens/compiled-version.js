@@ -1,1 +1,1 @@
-const TOKEN_SEED = [];
+var TOKEN_SEED = [];

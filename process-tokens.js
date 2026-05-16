@@ -96,7 +96,7 @@ console.log(`compiled-version.json: ${TOKEN_SEED.length} tokens`);
 // Save compiled-version.js (loaded by alcance-design-system.html via <script src>)
 fs.writeFileSync(
   COMPILED_JS,
-  `const TOKEN_SEED = ${JSON.stringify(TOKEN_SEED, null, 2)};\n`,
+  `var TOKEN_SEED = ${JSON.stringify(TOKEN_SEED, null, 2)};\n`,
   'utf8'
 );
 console.log(`compiled-version.js: ${TOKEN_SEED.length} tokens`);
