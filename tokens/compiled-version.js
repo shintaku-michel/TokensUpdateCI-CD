@@ -143,245 +143,280 @@ var TOKEN_SEED = [
     "name": "--alc-color-text/link",
     "type": "COLOR",
     "modes": {
-      "Light": "#07648D"
+      "Light": "#07648D",
+      "Dark": "{alc-color.action-40}"
     }
   },
   {
     "name": "--alc-color-text/error",
     "type": "COLOR",
     "modes": {
-      "Light": "#E52207"
+      "Light": "#E52207",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "--alc-color-text/primary",
     "type": "COLOR",
     "modes": {
-      "Light": "#000000"
+      "Light": "#000000",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "--alc-color-text/secondary",
     "type": "COLOR",
     "modes": {
-      "Light": "#1B1B1B"
+      "Light": "#1B1B1B",
+      "Dark": "#E6E6E6"
     }
   },
   {
     "name": "--alc-color-text/subtle",
     "type": "COLOR",
     "modes": {
-      "Light": "#5C5C5C"
+      "Light": "#5C5C5C",
+      "Dark": "#919191"
     }
   },
   {
     "name": "--alc-color-text/surface",
     "type": "COLOR",
     "modes": {
-      "Light": "#FFFFFF"
+      "Light": "#FFFFFF",
+      "Dark": "#111818"
     }
   },
   {
     "name": "--alc-color-text/layer-a",
     "type": "COLOR",
     "modes": {
-      "Light": "#F5F6F7"
+      "Light": "#F5F6F7",
+      "Dark": "#1C1D1F"
     }
   },
   {
     "name": "--alc-color-text/layer-b",
     "type": "COLOR",
     "modes": {
-      "Light": "#EDEFF0"
+      "Light": "#EDEFF0",
+      "Dark": "#232425"
     }
   },
   {
     "name": "--alc-color-text/layer-c",
     "type": "COLOR",
     "modes": {
-      "Light": "#FFFFFF"
+      "Light": "#FFFFFF",
+      "Dark": "#1C1D1F"
     }
   },
   {
     "name": "--alc-color-text/border",
     "type": "COLOR",
     "modes": {
-      "Light": "#C9C9C9"
+      "Light": "#C9C9C9",
+      "Dark": "#ADADAD"
     }
   },
   {
     "name": "--alc-color/surface",
     "type": "COLOR",
     "modes": {
-      "Light": "#FFFFFF"
+      "Light": "#FFFFFF",
+      "Dark": "#111818"
     }
   },
   {
     "name": "--alc-color/layer-a",
     "type": "COLOR",
     "modes": {
-      "Light": "#F5F6F7"
+      "Light": "#F5F6F7",
+      "Dark": "#1C1D1F"
     }
   },
   {
     "name": "--alc-color/layer-b",
     "type": "COLOR",
     "modes": {
-      "Light": "#EDEFF0"
+      "Light": "#EDEFF0",
+      "Dark": "#232425"
     }
   },
   {
     "name": "--alc-color/layer-c",
     "type": "COLOR",
     "modes": {
-      "Light": "#FFFFFF"
+      "Light": "#FFFFFF",
+      "Dark": "#1C1D1F"
     }
   },
   {
     "name": "--alc-color/border",
     "type": "COLOR",
     "modes": {
-      "Light": "#C9C9C9"
+      "Light": "#C9C9C9",
+      "Dark": "#ADADAD"
     }
   },
   {
     "name": "--alc-color/focus-outline",
     "type": "COLOR",
     "modes": {
-      "Light": "#07648D"
+      "Light": "#07648D",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "--alc-color/White",
     "type": "COLOR",
     "modes": {
-      "Light": "#FFFFFF"
+      "Light": "#FFFFFF",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "--alc-color/Black",
     "type": "COLOR",
     "modes": {
-      "Light": "#000000"
+      "Light": "#000000",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "Focus/—alc-color-focus-outline",
     "type": "COLOR",
     "modes": {
-      "Light": "#07648D"
+      "Light": "#07648D",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/info/background",
     "type": "COLOR",
     "modes": {
-      "Light": "#C3EBFA"
+      "Light": "#C3EBFA",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/info/text",
     "type": "COLOR",
     "modes": {
-      "Light": "#074B69"
+      "Light": "#074B69",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/info/icon",
     "type": "COLOR",
     "modes": {
-      "Light": "#074B69"
+      "Light": "#074B69",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/info/accent",
     "type": "COLOR",
     "modes": {
-      "Light": "#4F97D1"
+      "Light": "#4F97D1",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/warning/background",
     "type": "COLOR",
     "modes": {
-      "Light": "#F5E6AF"
+      "Light": "#F5E6AF",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/warning/text",
     "type": "COLOR",
     "modes": {
-      "Light": "#776017"
+      "Light": "#776017",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/warning/icon",
     "type": "COLOR",
     "modes": {
-      "Light": "#776017"
+      "Light": "#776017",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/warning/accent",
     "type": "COLOR",
     "modes": {
-      "Light": "#DDAA01"
+      "Light": "#DDAA01",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/error/background",
     "type": "COLOR",
     "modes": {
-      "Light": "#ECBEC6"
+      "Light": "#ECBEC6",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/error/text",
     "type": "COLOR",
     "modes": {
-      "Light": "#6F3331"
+      "Light": "#6F3331",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/error/icon",
     "type": "COLOR",
     "modes": {
-      "Light": "#6F3331"
+      "Light": "#6F3331",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/error/accent",
     "type": "COLOR",
     "modes": {
-      "Light": "#E52207"
+      "Light": "#E52207",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/sucess/background",
     "type": "COLOR",
     "modes": {
-      "Light": "#DFEACD"
+      "Light": "#DFEACD",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/sucess/text",
     "type": "COLOR",
     "modes": {
-      "Light": "#2F4A0B"
+      "Light": "#2F4A0B",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/sucess/icon",
     "type": "COLOR",
     "modes": {
-      "Light": "#2F4A0B"
+      "Light": "#2F4A0B",
+      "Dark": "#FFFFFF"
     }
   },
   {
     "name": "feedback/sucess/accent",
     "type": "COLOR",
     "modes": {
-      "Light": "#4D8055"
+      "Light": "#4D8055",
+      "Dark": "#FFFFFF"
     }
   }
 ];
