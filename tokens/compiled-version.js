@@ -1,4 +1,4 @@
-const TOKEN_SEED = [
+var TOKEN_SEED = [
   {
     "name": "text-color-base",
     "type": "COLOR",
