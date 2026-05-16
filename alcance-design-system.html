@@ -1829,37 +1829,6 @@
     }
 
     /* FIGMA SYNC */
-    .figma-file-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      margin-bottom: 28px
-    }
-
-    .figma-file-icon {
-      width: 40px;
-      height: 40px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
-
-    .figma-file-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 3px
-    }
-
-    .figma-file-meta {
-      font-size: 12px;
-      color: var(--text-secondary)
-    }
 
     .figma-group-label {
       font-size: 11px;
@@ -1869,83 +1838,6 @@
       color: var(--text-secondary);
       margin: 18px 0 10px
     }
-
-    .figma-color-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 8px
-    }
-
-    .figma-color-chip {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      min-width: 90px
-    }
-
-    .figma-swatch {
-      height: 64px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255, 255, 255, .06);
-      display: flex;
-      align-items: flex-end;
-      padding: 6px 8px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600
-    }
-
-    .figma-chip-label {
-      font-size: 11px;
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
-      text-align: center
-    }
-
-    .figma-type-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 20px;
-      border-bottom: 1px solid rgba(48, 54, 61, .5)
-    }
-
-    .figma-type-row:last-child {
-      border-bottom: none
-    }
-
-    .figma-type-preview {
-      flex: 1;
-      color: var(--text-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis
-    }
-
-    .figma-type-meta {
-      font-size: 11px;
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
-      white-space: nowrap;
-      flex-shrink: 0
-    }
-
-    .figma-spinner {
-      width: 16px;
-      height: 16px;
-      border: 2px solid var(--border);
-      border-top-color: var(--color-blue);
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-      flex-shrink: 0
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg)
-      }
     }
 
     .token-table {
@@ -2069,7 +1961,7 @@
     <div class="sidebar-section">
       <div class="sidebar-label">Integração</div>
       <button class="sidebar-link" onclick="nav('figma',this)" id="sidebar-figma"><span class="sidebar-dot"
-          style="background:var(--color-purple)"></span>Figma Sync</button>
+          style="background:var(--color-purple)"></span>Tokens</button>
     </div>
   </nav>
 
@@ -5717,7 +5609,7 @@
   <script src="tokens/compiled-version.js"></script>
   <script>
     if (typeof TOKEN_SEED === 'undefined') var TOKEN_SEED = [];
-    const NAMES = { home: 'Visão Geral', colors: 'Cores', typography: 'Tipografia', buttons: 'Buttons', fields: 'Fields & Inputs', fieldset: 'Fieldset', checkbox: 'Checkbox & Radio', badges: 'Badges', cards: 'Cards', alerts: 'Alert', user: 'User Avatar', navbar: 'Navbar', breadcrumb: 'Breadcrumb', tabs: 'Tabs', dropdown: 'Dropdown', collapse: 'Collapse', modal: 'Modal', tooltip: 'Tooltip', autocomplete: 'Autocomplete', tables: 'Tables', datatable: 'Datatable', footer: 'Footer', figma: 'Figma Sync' };
+    const NAMES = { home: 'Visão Geral', colors: 'Cores', typography: 'Tipografia', buttons: 'Buttons', fields: 'Fields & Inputs', fieldset: 'Fieldset', checkbox: 'Checkbox & Radio', badges: 'Badges', cards: 'Cards', alerts: 'Alert', user: 'User Avatar', navbar: 'Navbar', breadcrumb: 'Breadcrumb', tabs: 'Tabs', dropdown: 'Dropdown', collapse: 'Collapse', modal: 'Modal', tooltip: 'Tooltip', autocomplete: 'Autocomplete', tables: 'Tables', datatable: 'Datatable', footer: 'Footer', figma: 'Tokens' };
 
     function toggleSidebar() {
       document.querySelector('.sidebar').classList.toggle('collapsed');
@@ -5777,145 +5669,13 @@
     /* ── FIGMA SYNC ─────────────────────────────────── */
     /* Atualizado por: node sync-figma.js               */
 
-    function figmaLuminance(hex) {
-      const r = parseInt(hex.slice(1, 3), 16) / 255;
-      const g = parseInt(hex.slice(3, 5), 16) / 255;
-      const b = parseInt(hex.slice(5, 7), 16) / 255;
-      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    }
-
-    /* FIGMA_SEED:START */
-    const FIGMA_SEED = {
-      "syncedAt": "2026-05-15T19:00:29.164Z",
-      "file": {
-            "name": "Encurtador de Links",
-            "lastModified": "2026-05-13T14:35:40Z",
-            "pages": [
-                  "🚀 Sobre",
-                  "💻 Projeto",
-                  "🎨 Style Guide"
-            ]
-      },
-      "colors": [
-            {
-                  "group": "Produto",
-                  "hex": "#2c46b1",
-                  "label": "blue-base"
-            },
-            {
-                  "group": "Produto",
-                  "hex": "#2c4091",
-                  "label": "blue-dark"
-            },
-            {
-                  "group": "Base",
-                  "hex": "#ffffff",
-                  "label": "white"
-            },
-            {
-                  "group": "Base",
-                  "hex": "#f9f9fb",
-                  "label": "gray-100"
-            },
-            {
-                  "group": "Base",
-                  "hex": "#e4e6ec",
-                  "label": "gray-200"
-            },
-            {
-                  "group": "Base",
-                  "hex": "#cdcfd5",
-                  "label": "gray-300"
-            },
-            {
-                  "group": "Base",
-                  "hex": "#74798b",
-                  "label": "gray-400"
-            },
-            {
-                  "group": "Base",
-                  "hex": "#4d505c",
-                  "label": "gray-500"
-            },
-            {
-                  "group": "Base",
-                  "hex": "#1f2025",
-                  "label": "gray-600"
-            },
-            {
-                  "group": "Feedback",
-                  "hex": "#b12c4d",
-                  "label": "danger"
-            }
-      ],
-      "typo": [
-            {
-                  "sample": "Open Sans",
-                  "family": "Open Sans",
-                  "size": 56,
-                  "weight": 700
-            },
-            {
-                  "sample": "Font Family",
-                  "family": "Plus Jakarta Sans",
-                  "size": 24,
-                  "weight": 300
-            },
-            {
-                  "sample": "Text Xl",
-                  "family": "Open Sans",
-                  "size": 24,
-                  "weight": 700
-            },
-            {
-                  "sample": "24px",
-                  "family": "Roboto Condensed",
-                  "size": 20,
-                  "weight": 400
-            },
-            {
-                  "sample": "Name",
-                  "family": "Plus Jakarta Sans",
-                  "size": 18,
-                  "weight": 300
-            },
-            {
-                  "sample": "Text Lg",
-                  "family": "Open Sans",
-                  "size": 18,
-                  "weight": 700
-            },
-            {
-                  "sample": "Esta fonte pode ser acessada em Google F",
-                  "family": "Inter",
-                  "size": 16,
-                  "weight": 500
-            },
-            {
-                  "sample": "Text Md",
-                  "family": "Open Sans",
-                  "size": 14,
-                  "weight": 600
-            }
-      ]
-};
-    /* FIGMA_SEED:END */
+    /* FIGMA_SEED removed */
 
     /* TOKEN_SEED loaded from tokens/compiled-version.js */
 
     function loadFigma() {
       tokensRender(TOKEN_SEED);
     }
-
-    function figmaColorTab(btn, panelId) {
-      const list = btn.closest('.figma-tab-list');
-      list.querySelectorAll('.doc-tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      let el = list.nextElementSibling;
-      while (el && el.classList.contains('figma-tab-panel')) {
-        el.classList.toggle('active', el.id === panelId);
-        el = el.nextElementSibling;
-      }
     }
 
     function tokensRender(tokens) {
@@ -5970,89 +5730,6 @@
 
         html += `</tbody></table>`;
       }
-
-      body.innerHTML = html;
-    }
-
-    function figmaRender(data) {
-      const body = document.getElementById('figma-body');
-      const lastMod = new Date(data.file.lastModified).toLocaleDateString('pt-BR');
-      const syncedAt = new Date(data.syncedAt).toLocaleString('pt-BR');
-      const pages = data.file.pages.join(' · ');
-
-      const lightGroups = {}, darkGroups = {}, otherGroups = {};
-      for (const c of data.colors) {
-        const g = c.group.toLowerCase();
-        if (g.includes('light')) (lightGroups[c.group] = lightGroups[c.group] || []).push(c);
-        else if (g.includes('dark')) (darkGroups[c.group] = darkGroups[c.group] || []).push(c);
-        else (otherGroups[c.group] = otherGroups[c.group] || []).push(c);
-      }
-
-      function renderGroups(groups) {
-        let h = '';
-        for (const [grp, list] of Object.entries(groups)) {
-          const label = grp.replace(/\/(light|dark)$/i, '').replace(/^(light|dark)\//i, '').trim();
-          h += `<div class="figma-group-label">${label}</div><div class="figma-color-row">`;
-          for (const c of list) {
-            const fg = figmaLuminance(c.hex) > 0.35 ? '#1f2025' : '#f9f9fb';
-            h += `
-              <div class="figma-color-chip">
-                <div class="figma-swatch" style="background:${c.hex}"><span style="color:${fg}">${c.hex}</span></div>
-                <div class="figma-chip-label">${c.label}</div>
-              </div>`;
-          }
-          h += `</div>`;
-        }
-        return h;
-      }
-
-      const hasLight = Object.keys(lightGroups).length > 0;
-      const hasDark = Object.keys(darkGroups).length > 0;
-      const hasTabs = hasLight && hasDark;
-
-      let html = `
-        <div class="figma-file-card">
-          <div class="figma-file-icon">
-            <svg width="24" height="36" viewBox="0 0 38 57" fill="none">
-              <path d="M19 28.5A9.5 9.5 0 1 1 28.5 19 9.5 9.5 0 0 1 19 28.5z" fill="#1abcfe"/>
-              <path d="M9.5 57A9.5 9.5 0 0 1 9.5 38H19v9.5A9.5 9.5 0 0 1 9.5 57z" fill="#0acf83"/>
-              <path d="M19 0H9.5A9.5 9.5 0 0 0 9.5 19H19z" fill="#ff7262"/>
-              <path d="M28.5 0H19v19h9.5A9.5 9.5 0 0 0 28.5 0z" fill="#f24e1e"/>
-              <path d="M38 9.5A9.5 9.5 0 0 1 28.5 19H19V0h9.5A9.5 9.5 0 0 1 38 9.5z" fill="#a259ff"/>
-            </svg>
-          </div>
-          <div>
-            <div class="figma-file-name">${data.file.name}</div>
-            <div class="figma-file-meta">Modificado em ${lastMod} · ${data.file.pages.length} páginas: ${pages}</div>
-            <div class="figma-file-meta" style="margin-top:2px">Sincronizado em ${syncedAt}</div>
-          </div>
-        </div>`;
-
-      html += `<div class="subsection-title">Paleta de Cores</div>`;
-
-      if (hasTabs) {
-        html += `
-          <div class="figma-tab-list doc-tab-list">
-            <button class="doc-tab-btn active" onclick="figmaColorTab(this,'figma-colors-light')">Modo Light</button>
-            <button class="doc-tab-btn" onclick="figmaColorTab(this,'figma-colors-dark')">Modo Dark</button>
-          </div>
-          <div id="figma-colors-light" class="figma-tab-panel doc-tab-panel active" style="padding-top:20px">${renderGroups(lightGroups)}${renderGroups(otherGroups)}</div>
-          <div id="figma-colors-dark" class="figma-tab-panel doc-tab-panel" style="padding-top:20px">${renderGroups(darkGroups)}</div>`;
-      } else {
-        html += renderGroups({ ...otherGroups, ...lightGroups, ...darkGroups });
-      }
-
-      html += `<div class="subsection-title" style="margin-top:32px">Tipografia</div>`;
-      html += `<div class="demo-block"><div style="padding:0">`;
-      for (const t of data.typo) {
-        const displaySize = Math.min(t.size, 30);
-        html += `
-          <div class="figma-type-row">
-            <span class="figma-type-preview" style="font-family:'${t.family}',sans-serif;font-size:${displaySize}px;font-weight:${t.weight}">${t.sample}</span>
-            <span class="figma-type-meta">${t.family} · ${t.size}px · w${t.weight}</span>
-          </div>`;
-      }
-      html += `</div></div>`;
 
       body.innerHTML = html;
     }
